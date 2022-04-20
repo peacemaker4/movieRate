@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <h1 class="header-1 mt-3">Catalogue</h1>
+
+    <h3 class="main-font text-center text-light mt-3">Popular movies <i class="fa-solid fa-fire-flame-curved"></i></h3>
+
+    <div class="movie-container row row-cols-1 row-cols-md-3 d-flex justify-content-center mt-3 w-100">
+        <% data1.forEach(function(movie) { %>
+            <div class="movie-box mb-3">
+                <img class="movie-cover" src="<%= movie.image%>">
+                <h2 class="movie-title">
+                    <%= movie.fullTitle %>
+                </h2>
+                <h2 class="movie-rating">
+                    Rating:
+                    <% if (movie.imDbRating < 10 && movie.imDbRating >= 7){ %>
+                        <span class="text-success"><%= movie.imDbRating %>★</span>
+                    <%} else { if(movie.imDbRating < 7 && movie.imDbRating >= 5.5) { %>
+                        <span class="text-secondary"><%= movie.imDbRating %>★</span>
+                    <% } else  {%>
+                        <span class="text-danger"><%= movie.imDbRating %>★</span>
+                    <% }}%>
+                </h2>
+            </div>
+        <% }); %>
+    </div>
+
+    <h3 class="main-font text-center text-light mt-3">Top TV-series <i class="fa-solid fa-face-surprise"></i></h3>
+    <div class="movie-container row row-cols-1 row-cols-md-3 d-flex justify-content-center mt-3 w-100">
+        <% data2.forEach(function(movie) { %>
+            <div class="movie-box mb-3">
+                <img class="movie-cover" src="<%= movie.image%>">
+                <h2 class="movie-title mt-3">
+                    <%= movie.fullTitle %>
+                </h2>
+                <h2 class="movie-rating">
+                    Rating:
+                    <% if (movie.imDbRating < 10 && movie.imDbRating >= 7){ %>
+                        <span class="text-success"><%= movie.imDbRating %>★</span>
+                    <%} else { if(movie.imDbRating < 7 && movie.imDbRating >= 5.5) { %>
+                        <span class="text-secondary"><%= movie.imDbRating %>★</span>
+                    <% } else  {%>
+                        <span class="text-danger"><%= movie.imDbRating %>★</span>
+                    <% }}%>
+                </h2>
+                </h2>
+            </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<%- include('layout/footer'); %>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <div class="poster bg-dark text-white mt-1">
+        <img src="img/bg-1.jpg" class="poster-img img-blur" alt="...">
+        <div class="poster-img-overlay">
+            <a class="title text-center mt-3 link-hover " href="home">
+                Rate movies here!
+            </a>
+        </div>
+    </div>
+
+    <div class="container_top v2">
+        <img src="img/icon-1.png" class="icon n1">
+        <div class="header_container">
+            <h3>All movies, with all available information and resources</h3>
+        </div>
+        <div class="text_container">
+            <p>On the main page there is going to be different top movies, divided by different categories. High rated movies and movies that are coming soon, etc. There are several popular analogies to this topic, these are: IMDB, Metacritic, Rotten Tomatoes. These sites are mostly known for critics and users reviews of movies, but also for TV-shows, videogames, and more. </p>
+        </div>
+        <div class="text_container">
+            <p>Clicking on any movie from the catalog opens the movie page itself. The page will have all the information needed. : Movie title, description, release date, cast list, etc. Film cover. A window with a movie trailer, if any exists. The overall rating of users with the number of ratings.</p>
+        </div>
+    </div>
+
+    <div class="container_cards">
+        <div class="card_box" style="background-color: white">
+            <div class="image_box"></div>
+            <div class="container_group card-row">
+                <h4 class="page_text card_header">
+                    Explore more!
+                </h4>
+                <p class="page_text card_info">
+                    Sign up to browse movies. Become a movie critic...
+                </p>
+                <button class="btn btn-info">Sign up!</button>
+            </div>
+        </div>
+        <div class="card_box bg-black">
+            <div class="image_box ai"></div>
+            <div class="container_group card-row">
+                <h4  class="text-light card_header">
+                    Find more!
+                </h4>
+                <p class="text-light card_info">
+                    I'm sorry Dave, I'm afraid I can't do that.
+                </p>
+                <button class="btn btn-outline-light">Become a Member</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container_movies">
+        <div class="container_group col">
+            <div class="proj_info text-center">
+                <h3 class="text-light">
+                    Featured Movies
+                </h3>
+                <p class="text-light">
+                    Brief details of new and popular movies.
+                </p>
+            </div>
+        </div>
+
+        <div class="container_group col">
+            <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center mt-3 w-100">
+                <div class="movie-box mb-3 border border-danger border-2">
+                    <img class="movie-cover" src="img/cover-1.jpg">
+                    <h2 class="movie-title text-danger" style="font-size: 28px">
+                        Inception
+                    </h2>
+                    <h2 class="movie-rating text-danger">
+                        Rating:
+                        <span>
+                            8.8★
+                        </span>
+                    </h2>
+                </div>
+                <div class="movie-box mb-3 border-pink">
+                    <img class="movie-cover" src="img/cover-2.jpg">
+                    <h2 class="movie-title text-pink" style="font-size: 28px">
+                        Drive
+                    </h2>
+                    <h2 class="movie-rating text-pink">
+                        Rating:
+                        <span>
+                            7.8★
+                        </span>
+                    </h2>
+                </div>
+                <div class="movie-box mb-3 border border-warning border-2">
+                    <img class="movie-cover" src="img/cover-3.jpg">
+                    <h2 class="movie-title text-warning" style="font-size: 28px">
+                        Fight club
+                    </h2>
+                    <h2 class="movie-rating text-warning">
+                        Rating:
+                        <span>
+                            8.8★
+                        </span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<%- include('layout/footer'); %>
+
+</body>
+</html>
+
+

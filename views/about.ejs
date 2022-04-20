@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <h1 class="header-1 mt-3">About us</h1>
+
+    <div class="text-container text-black main-font">
+        <h1>Movier+</h1>
+        <p>
+            The topic of the project is a movie rating website. Where almost all films, with all available information and resources, site users will be able to leave reviews, contributing to the overall rating of the film on the page.
+        </p>
+        <p>
+            Site roles will be divided into user, moderator and admin. The user will have the simplest rights, this is viewing pages, leaving a rating, and more. Most likely, the ratings that users leave will have to be verified, this check will be done by moderators. And all other features, such as data management, will have an admin.
+            The admin will add movies manually, or will get it from the movies API, after which everyone can view this page. Users can leave review, after which the review is sent for processing, the moderator will have a separate panel with all requests, where he can allow or deny the requested review.
+        </p>
+    </div>
+
+</div>
+
+<%- include('layout/footer'); %>
+</body>
+</html>
