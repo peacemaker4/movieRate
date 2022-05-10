@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <h2 class="header-1 mt-3">Users <i class="fa-solid fa-users"></i></h2>
+
+    <div class="d-flex justify-content-center">
+        <form class="input-group mb-3" action="/users/find/" method="post" style="max-width: 500px;">
+            <input type="text" class="form-control bg-transparent border border-light text-light" name="searchReq" placeholder="Search">
+            <button class="btn btn-outline-light" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+
+        <% if(data.length){
+            for(var i = 0; i < data.length; i++) {%>
+                <div class="d-flex justify-content-center  row-cols-1 row-cols-lg-3">
+                <div class="card bg-dark border border-light mb-3" style="max-width: 540px;">
+                    <a class="row g-0" href="/users/<%=data[i].id%>" style="text-decoration: none">
+                        <div class="user-photo-container col-md-2 d-flex align-items-center">
+                            <img src="/img/default-profile.png" class="user-photo border border-5 border-dark rounded-circle not-draggable" >
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger main-font-light"><%= data[i].username %></h5>
+                                <h5 class="card-title text-secondary main-font-light"><%= data[i].email %></h5>
+                            </div>
+
+                            <form action="/users/<%=data[i].id%>/edit" method="get">
+                                <button class="btn btn-purple" >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </form>
+
+                            <form action="/users/<%=data[i].id%>?_method=DELETE" method="post">
+                                <button class="btn btn-danger" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </a>
+                </div>
+                </div>
+<% }
+        }else{ %>
+                <div class="d-flex justify-content-center  row-cols-1 row-cols-lg-3">
+                    <div class="card bg-dark align-items-center rounded pb-3 border border-gray" style="max-width: 800px">
+                        <div  class="text-light mt-3">
+                            <span>No users</span> <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                    </div>
+                </div>
+        <% } %>
+</div>
+
+<%- include('layout/footer'); %>
+</body>
+</html>

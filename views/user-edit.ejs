@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Profile</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <div class="profile-image-container">
+        <div class="profile-wallpaper-container border border-0">
+        </div>
+        <div class="profile-photo-container">
+            <img src="/img/default-profile.png" class="profile-photo border border-5 border-dark rounded-circle not-draggable" >
+        </div>
+    </div>
+    <form action="/users/<%=data.id%>?_method=PATCH" method="post">
+        <div class="d-flex justify-content-center align-items-center row w-100 row-cols-1 row-cols-lg-3 ">
+            <div class="ms-3 mb-3 mt-3">
+                <div class="form-floating form-group mb-3">
+                    <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="User name" value="<%= data.username %>" required>
+                    <label for="floatingUsername"><i class="fa-solid fa-user-secret"></i> Username</label>
+                </div>
+                <div class="form-floating form-group mb-3">
+                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<%= data.email %>" required>
+                    <label for="floatingInput"><i class="fa-solid fa-envelope"></i> Email address</label>
+                </div>
+                <button class="btn btn-outline-danger " type="submit">
+                    Save
+                    <i class="fa-solid fa-circle-check"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<%- include('layout/footer'); %>
+</body>
+</html>
+
+

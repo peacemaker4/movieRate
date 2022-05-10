@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Movie</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<%- include('layout/navbar'); %>
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-center row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <img class="movie-cover-page rounded" src="<%= data.cover %>">
+        <div>
+            <div class="card bg-dark align-items-center rounded pb-3 border border-light">
+                <h1 class="header-1 mt-3">
+                    <%= data.title %>
+                </h1>
+
+                <div class="text-center">
+                    <span class="badge rounded-pill bg-light text-dark ms-1">
+                        <%= data.genre %>
+                    </span>
+                </div>
+                <div class="text-start mt-3 w-75">
+                    <p class="text-secondary">
+                        <i class="fa-solid fa-calendar-days"></i> Released:
+                        <span class="text-light">
+                            <%= data.year %>
+                        </span>
+                    </p>
+                    <p class="text-secondary">
+                        <i class="fa-solid fa-address-book"></i> Director:
+                        <span class="text-light">
+                             <%= data.director %>
+                        </span>
+                    </p>
+                    <p class="text-secondary">
+                        <i class="fa-solid fa-flag"></i> Country:
+                        <span class="text-light">
+                            <%= data.country %>
+                        </span>
+                    </p>
+                    <p class="text-secondary">
+                        <i class="fa-solid fa-user-group"></i> Actors:
+                        <span class="text-light">
+                            <%= data.actors %>
+                        </span>
+                    </p>
+                </div>
+                <p>
+                    <button class="btn btn-primary bg-transparent border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body bg-transparent text-light">
+                        <%= data.description %>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card bg-dark rounded align-items-center pb-3 pt-3 mt-3 border border-gray">
+                <h4 class="main-font text-light">Trailer:</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="<%= data.trailer %>" allowfullscreen></iframe>
+                </div>
+            </div>
+<!--            <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">-->
+<!--                <button class="btn btn-light">-->
+<!--                    Write a review <i class="fa-solid fa-feather-pointed"></i>-->
+<!--                </button>-->
+<!--            </div>-->
+            <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">
+                <a class="btn btn-warning" href="/movies/<%=data.id%>/edit">
+                    Edit <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                        <form action="/movies/<%=data.id%>?_method=DELETE" method="post">
+                            <button class="btn btn-danger">
+                                Delete <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<%- include('layout/footer'); %>
+</body>
+</html>

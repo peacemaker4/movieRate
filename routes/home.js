@@ -17,7 +17,7 @@ router
                 var data1 = data1.data.items;
                 var data2 = data2.data.items;
 
-                data1 = data1.slice(5, 10)
+                data1 = data1.slice(0, 5)
                 data2 = data2.slice(0, 3)
                 res.render(path.resolve("views/home.ejs"),{
                     data1: data1,

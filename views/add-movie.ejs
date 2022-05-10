@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign up</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <div class="container py-2">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col col-xl-10">
+                <div class="card bg-black" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form action="/movies/" method="post">
+                                    <h1 class="fw-normal mb-3 pb-3 text-danger text-center">
+                                        New Movie <i class="fa-solid fa-clapperboard"></i>+
+                                    </h1>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
+                                        <label for="title"><i class="fa-solid fa-clapperboard"></i> Title</label>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <textarea type="text" name="description" class="form-control" id="description" placeholder="Description" required></textarea>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="number" name="year" class="form-control" id="year" placeholder="Year" required>
+                                        <label for="title"><i class="fa-solid fa-calendar-days"></i> Year</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="genre" class="form-control" id="genre" placeholder="Genre" required>
+                                        <label for="genre"><i class="fa-solid fa-tag"></i> Genre</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="country" class="form-control" id="country" placeholder="Country" required>
+                                        <label for="country"><i class="fa-solid fa-flag"></i> Country</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="director" class="form-control" id="director" placeholder="Director" required>
+                                        <label for="director"><i class="fa-solid fa-address-book"></i> Director</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="actors" class="form-control" id="actors" placeholder="Actors" required>
+                                        <label for="actors"><i class="fa-solid fa-user-group"></i> Actors</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="text" name="cover" class="form-control" id="cover" placeholder="Cover" required>
+                                        <label for="cover"><i class="fa-solid fa-image"></i> Cover</label>
+                                    </div>
+                                    <div class="form-floating form-group mb-3 ">
+                                        <input type="text" name="trailer" class="form-control" id="trailer" placeholder="Trailer" required>
+                                        <label for="trailer"><i class="fa-solid fa-caravan"></i> Trailer</label>
+                                    </div>
+                                    <button class="btn btn-lg btn-danger rounded-pill mb-4" type="submit">Add <i class="fa-solid fa-plus"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('layout/footer'); %>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Movie</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<%- include('layout/navbar'); %>
+
+<div class="container-fluid">
+    <form action="/movies/<%=data.id%>?_method=PATCH" method="post">
+    <div class="d-flex justify-content-center row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <img class="movie-cover-page rounded" src="<%= data.cover %>">
+        <div>
+            <div class="card bg-dark align-items-center rounded pb-3 border border-light">
+                <div class="form-floating form-group mb-3 text-light mt-3">
+                    <input type="text" name="title" class="form-control bg-transparent text-light" id="title" placeholder="Title" value="<%= data.title %>" required>
+                    <label for="title"><i class="fa-solid fa-clapperboard"></i> Title</label>
+                </div>
+
+                <div class="text-center">
+                    <div class="form-floating form-group text-light mb-3">
+                        <input type="text" name="genre" class="form-control bg-transparent text-light" id="genre" placeholder="Genre" value="<%= data.genre %>" required>
+                        <label for="genre"><i class="fa-solid fa-tag"></i> Genre</label>
+                    </div>
+                </div>
+                <div class="text-start w-75">
+                    <p class="text-secondary">
+                        <div class="form-floating form-group text-light mb-3">
+                            <input type="number" name="year" class="form-control bg-transparent text-light" id="year" value="<%= data.year %>" placeholder="Year" required>
+                            <label for="title"><i class="fa-solid fa-calendar-days"></i> Year</label>
+                        </div>
+                    </p>
+                    <p class="text-secondary">
+                        <div class="form-floating form-group text-light mb-3">
+                            <input type="text" name="director" class="form-control bg-transparent text-light" id="director" value="<%= data.director %>" placeholder="Director" required>
+                            <label for="director"><i class="fa-solid fa-address-book"></i> Director</label>
+                        </div>
+                    </p>
+                    <p class="text-secondary">
+                        <div class="form-floating form-group text-light mb-3">
+                            <input type="text" name="country" class="form-control bg-transparent text-light" id="country" value="<%= data.country %>" placeholder="Country" required>
+                            <label for="country"><i class="fa-solid fa-flag"></i> Country</label>
+                        </div>
+                    </p>
+                    <p class="text-secondary">
+                        <div class="form-floating form-group text-light mb-3">
+                            <input type="text" name="actors" class="form-control bg-transparent text-light" id="actors" value="<%= data.actors %>" placeholder="Actors" required>
+                            <label for="actors"><i class="fa-solid fa-user-group"></i> Actors</label>
+                        </div>
+                    </p>
+                    <textarea type="text" name="description" class="form-control bg-transparent text-light" rows="5" id="description" placeholder="Description" required>
+                        <%= data.description %>
+                    </textarea>
+                </div>
+
+            </div>
+
+            <div class="card bg-dark rounded align-items-center pb-3 pt-3 mt-3 border border-gray">
+                <h4 class="main-font text-light">Trailer:</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="<%= data.trailer %>" allowfullscreen></iframe>
+                </div>
+                <div class="mt-3 w-75">
+                    <div class="form-floating form-group text-light mb-3 ">
+                        <input type="text" name="trailer" class="form-control bg-transparent text-light" id="trailer" value="<%= data.trailer %>" placeholder="Trailer" required>
+                        <label for="trailer"><i class="fa-solid fa-caravan"></i> Trailer</label>
+                    </div>
+                    <div class="form-floating form-group text-light mb-3">
+                        <input type="text" name="cover" class="form-control bg-transparent text-light" id="cover" value="<%= data.cover %>" placeholder="Cover" required>
+                        <label for="cover"><i class="fa-solid fa-image"></i> Cover</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">
+                    <span>
+                        <button class="btn btn-warning" type="submit">
+                            Update <i class="fa-solid fa-check"></i>
+                        </button>
+                    </span>
+            </div>
+        </div>
+
+    </div>
+    </form>
+</div>
+<%- include('layout/footer'); %>
+</body>
+</html>

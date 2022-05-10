@@ -325,3 +325,63 @@
 .border-pink{
     border: #FD5492 2px solid;
 }
+
+.user-photo-container{
+    height: 89px;
+    width: 89px;
+}
+
+.user-photo{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-image-container{
+    display: flex;
+    justify-content: center;
+    vertical-align: bottom;
+    height: 400px;
+}
+
+.profile-wallpaper-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #e02135, #b61031, #8d042a, #650020, #3f0014);
+    height: 70%;
+}
+
+.profile-wallpaper{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-photo-container{
+    height: 254px;
+    width: 254px;
+    position: absolute;
+    align-self: flex-end;
+}
+
+.profile-photo{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-user-information{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-username{
+    color: white;
+    font-size: 36px;
+}
+
+.movie-cover-page{
+    width: 350px;
+    height: 500px;
+}
