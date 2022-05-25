@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://movier-plus.herokuapp.com",
+  "host": "movier-plus.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
