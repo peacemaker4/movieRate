@@ -6,8 +6,8 @@
 </head>
 <body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
 <%- include('layout/navbar'); %>
-
-<div class="container-fluid">
+<%- include('add-review'); %>
+<div class="container-fluid pb-5">
     <div class="d-flex justify-content-center row g-4 py-5 row-cols-1 row-cols-lg-3">
         <img class="movie-cover-page rounded" src="<%= data.cover %>">
         <div>
@@ -66,25 +66,26 @@
                     <iframe class="embed-responsive-item" src="<%= data.trailer %>" allowfullscreen></iframe>
                 </div>
             </div>
-<!--            <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">-->
-<!--                <button class="btn btn-light">-->
-<!--                    Write a review <i class="fa-solid fa-feather-pointed"></i>-->
-<!--                </button>-->
-<!--            </div>-->
+
             <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">
                 <a class="btn btn-warning" href="/movies/<%=data.id%>/edit">
                     Edit <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-                        <form action="/movies/<%=data.id%>?_method=DELETE" method="post">
-                            <button class="btn btn-danger">
-                                Delete <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                <form action="/movies/<%=data.id%>?_method=DELETE" method="post">
+                    <button class="btn btn-danger">
+                        Delete <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
             </div>
-
+            <div class="card bg-dark rounded align-items-center pb-3 mt-3 pt-3 border border-gray">
+                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    Write a review <i class="fa-solid fa-feather-pointed"></i>
+                </button>
+            </div>
         </div>
     </div>
-
+    <h2 class="header-1 text-light">Reviews <i class="fa-solid fa-feather-pointed"></i></h2>
+    <%- include('reviews'); %>
 </div>
 <%- include('layout/footer'); %>
 </body>

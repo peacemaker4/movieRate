@@ -11,6 +11,10 @@ var schema = new mongoose.Schema({
     user_id: {
         type: String,
     },
+    movie_id: {
+        type: String,
+        required: true,
+    },
     date: {
         type: Date,
     },

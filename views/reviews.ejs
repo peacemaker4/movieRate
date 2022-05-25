@@ -1,0 +1,23 @@
+<% if(reviews.length){ %>
+    <div class="row d-flex justify-content-center align-content-around flex-wrap mt-3 w-100">
+        <% reviews.forEach(function(review) { %>
+            <div class="card text-center m-3 bg-dark text-light border rounded" style="max-width: 725px">
+                <div class="card-body">
+                    <h5 class="card-title"><%=review.title %></h5>
+                    <p class="card-text"><%=review.description %></p>
+                </div>
+                <div class="card-footer text-muted">
+                    <%=review.date.toISOString().replace(/T/, ' ').replace(/\..+/, '').replaceAll('-', '/') %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+<% }else{ %>
+    <div class="d-flex justify-content-center row-cols-1 row-cols-lg-3">
+        <div class="card bg-dark align-items-center rounded pb-3 border border-gray" style="max-width: 800px">
+            <div class="text-light mt-3">
+                <span>No reviews found </span> <i class="fa-solid fa-compress"></i>
+            </div>
+        </div>
+    </div>
+<% } %>

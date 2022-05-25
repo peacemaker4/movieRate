@@ -5,8 +5,12 @@ const app = express();
 // const port = 3000;
 const dbConfig = require('./config/database.config.js');
 const methodOverride = require('method-override')
-
 app.use(methodOverride('_method'))
+
+//swagger
+const swaggerUi = require("swagger-ui-express")
+swaggerDocument = require("./swagger.json")
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/static'));
@@ -25,12 +29,15 @@ mongoose.connect(dbConfig.url, {
 });
 
 app.use('/users', require('./routes/userRoute'))
+app.use('/api/users', require('./routes/userApiRoute'))
 app.use('/movies', require('./routes/movieRoute'))
+app.use('/api/movies', require('./routes/movieApiRoute'))
+app.use('/reviews', require('./routes/reviewRoute'))
+app.use('/api/reviews', require('./routes/reviewApiRoute'))
 
 app.use("/", require("./routes/root"));
 app.use("/home", require("./routes/home"));
 app.use("/about", require("./routes/about"));
-app.use("/contact", require("./routes/contact"));
 app.use("/register", require("./routes/register"));
 app.use("/admin/movies/add", require("./routes/add-movie"));
 

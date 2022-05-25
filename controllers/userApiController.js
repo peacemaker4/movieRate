@@ -15,7 +15,10 @@ exports.create = async (req, res) => {
     });
 
     await user.save().then(data => {
-        res.redirect("/users/" + data.id)
+        res.send({
+            message:"User created successfully!",
+            user:data
+        });
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Error occurred while creating user"
@@ -26,9 +29,7 @@ exports.create = async (req, res) => {
 exports.findAll = async (req, res) => {
     try {
         const users = await UserModel.find();
-        res.render(path.resolve("views/users.ejs"),{
-            data: users
-        })
+        res.status(200).json(users);
     } catch(error) {
         console.log(error.message)
         res.status(404).json({message: error.message});
@@ -37,16 +38,9 @@ exports.findAll = async (req, res) => {
 //FindById
 exports.findOne = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
-    res.render(path.resolve("views/user.ejs"),{
-        data: user
-    })
-};
-
-//FindById
-exports.findOneEdit = async (req, res) => {
-    const user = await UserModel.findById(req.params.id);
-    res.render(path.resolve("views/user-edit.ejs"),{
-        data: user
+    res.send({
+        message:"User found successfully!",
+        user: user
     })
 };
 
@@ -54,17 +48,17 @@ exports.findOneEdit = async (req, res) => {
 exports.findByUsername = async (req, res) => {
 
     try {
-        if (!req.body.searchReq) {
-            const users = await UserModel.find();
-            res.render(path.resolve("views/users.ejs"),{
-                data: users
-            })
+        if (req.body.searchReq) {
+            const users = await UserModel.find({ username: new RegExp('^'+req.body.searchReq+'$', "i")});
+            res.send({
+                message:"User found successfully!",
+                user: users
+            });
         }
         else{
-            const user = await UserModel.find({ username: new RegExp('^'+req.body.searchReq+'$', "i")});
-            res.render(path.resolve("views/users.ejs"),{
-                data: user
-            })
+            res.send({
+                message:"User not found",
+            });
         }
     } catch(error) {
         res.status(404).json({ message: error.message});
@@ -85,7 +79,7 @@ exports.update = async (req, res) => {
                 message: `User not found`
             });
         }else{
-            res.redirect("/users/" + id)
+            res.send({ message: "User updated successfully!" })
         }
     }).catch(err => {
         res.status(500).send({
@@ -101,7 +95,9 @@ exports.destroy = async (req, res) => {
                 message: `User not found`
             });
         } else {
-            res.redirect("/users/")
+            res.send({
+                message: "User has been deleted!"
+            });
         }
     }).catch(err => {
         res.status(500).send({

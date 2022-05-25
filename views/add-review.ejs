@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light" id="staticBackdropLabel">Adding review <i class="fa-solid fa-feather-pointed"></i></h5>
+            </div>
+            <form method="post" action="/reviews/">
+                <div class="modal-body">
+                    <div class="form-floating form-group mb-3 text-light">
+                        <input type="text" name="title" class="form-control bg-transparent text-light" id="title" placeholder="Title" required>
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="form-group mb-3 text-light">
+                        <textarea type="text" name="description" class="form-control bg-transparent text-light" id="description" placeholder="Description" rows="5" required></textarea>
+                    </div>
+                    <input name="user_id" type="hidden" value="Unknown">
+                    <input name="movie_id" type="hidden" value="<%=data.id%>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-light">Add <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

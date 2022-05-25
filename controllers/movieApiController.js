@@ -1,6 +1,6 @@
 const MovieModel = require('../models/movieModel')
-const ReviewModel = require('../models/reviewModel')
 const path = require("path");
+const UserModel = require("../models/userModel");
 //Create
 exports.create = async (req, res) => {
     if (!req.body.title && !req.body.description) {
@@ -20,7 +20,10 @@ exports.create = async (req, res) => {
     });
 
     await movie.save().then(data => {
-        res.redirect("/movies/" + data.id)
+        res.send({
+            message:"Movie added successfully!",
+            movie:data
+        });
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Error occurred while adding movie"
@@ -31,9 +34,7 @@ exports.create = async (req, res) => {
 exports.findAll = async (req, res) => {
     try {
         const movies = await MovieModel.find();
-        res.render(path.resolve("views/movies.ejs"),{
-            data: movies
-        })
+        res.status(200).json(movies);
     } catch(error) {
         console.log(error.message)
         res.status(404).json({message: error.message});
@@ -43,21 +44,9 @@ exports.findAll = async (req, res) => {
 exports.findOne = async (req, res) => {
     try {
         const movie = await MovieModel.findById(req.params.id);
-        const reviews = await ReviewModel.find({ movie_id: req.params.id});
-        res.render(path.resolve("views/movie.ejs"),{
-            data: movie,
-            reviews: reviews
-        })
-    } catch(error) {
-        res.status(404).json({ message: error.message});
-    }
-};
-//FindByIdEdit
-exports.findOneEdit = async (req, res) => {
-    try {
-        const movie = await MovieModel.findById(req.params.id);
-        res.render(path.resolve("views/movie-edit.ejs"),{
-            data: movie
+        res.send({
+            message:"Movie found successfully!",
+            movie: movie
         })
     } catch(error) {
         res.status(404).json({ message: error.message});
@@ -66,17 +55,17 @@ exports.findOneEdit = async (req, res) => {
 //FindByTitle
 exports.findByTitle = async (req, res) => {
     try {
-        if (!req.body.searchReq) {
-            const movies = await MovieModel.find();
-            res.render(path.resolve("views/movies.ejs"),{
-                data: movies
-            })
+        if (req.body.searchReq) {
+            const movie = await MovieModel.find({ title: new RegExp('^'+req.body.searchReq+'$', "i")});
+            res.send({
+                message:"Movie found successfully!",
+                movie: movie
+            });
         }
         else{
-            const movie = await MovieModel.find({ title: new RegExp('^'+req.body.searchReq+'$', "i")});
-            res.render(path.resolve("views/movies.ejs"),{
-                data: movie
-            })
+            res.status(404).send({
+                message: `Movie not found`
+            });
         }
     } catch(error) {
         res.status(404).json({ message: error.message});
@@ -98,7 +87,7 @@ exports.update = async (req, res) => {
                 message: `Movie not found`
             });
         }else{
-            res.redirect("/movies/" + id)
+            res.send({ message: "Movie data updated successfully!" })
         }
     }).catch(err => {
         res.status(500).send({
@@ -114,7 +103,9 @@ exports.destroy = async (req, res) => {
                 message: `Movie not found`
             });
         } else {
-            res.redirect("/movies/")
+            res.send({
+                message: "Movie has been deleted!"
+            });
         }
     }).catch(err => {
         res.status(500).send({
