@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign up</title>
+    <%- include('layout/head'); %>
+</head>
+<body class="bg-1 d-flex flex-column min-vh-100" style="margin: 0px auto">
+<div>
+    <%- include('layout/navbar'); %>
+
+    <div class="container py-2">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col col-xl-10">
+                <div class="card bg-black" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form action="/users/authorize" method="post">
+                                    <h1 class="fw-normal mb-3 pb-3 text-primary">
+                                        Sign in <i class="fa-solid fa-right-to-bracket"></i>
+                                    </h1>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                        <label for="floatingInput"><i class="fa-solid fa-envelope"></i> Email address</label>
+                                        <div class="invalid-feedback">
+                                            User with this email is already exists
+                                        </div>
+                                    </div>
+                                    <div class="form-floating form-group mb-3">
+                                        <input type="password" name="password" minlength="8" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                        <label for="floatingPassword"><i class="fa-solid fa-lock"></i> Password</label>
+                                        <div class="invalid-feedback">
+                                            Password is empty
+                                        </div>
+                                    </div>
+                                    <div class="text-light mb-3">
+                                        <input type="checkbox"class="form-check-input rounded-circle" id="password-show">
+                                        <label class="form-check-label" for="password-show">Show password</label>
+                                    </div>
+                                    <script>
+                                        $("#password-show").change(function(){
+                                            var $pwd = $("#floatingPassword");
+                                            if ($pwd.attr('type') === 'password') {
+                                                $pwd.attr('type', 'text');
+                                            } else {
+                                                $pwd.attr('type', 'password');
+                                            }
+                                        });
+                                    </script>
+                                    <button class="btn btn-lg btn-primary rounded-pill mb-4" type="submit">Register</button>
+                                    <p style="color: darkgray">Not registered? <a href="/register">Sign up!</a></p>
+                                    <p style="color: darkgray">Other authorization ways</p>
+                                    <div class="col-sm-6">
+                                        <a class="btn btn-light text-primary border border-primary" href="/auth/google" role="button">
+                                            <i class="fab fa-google"></i>
+                                            Continue with Google
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img
+                                    src="img/bg-2.jpg"
+                                    alt="login form"
+                                    class="img-fluid not-draggable" style="border-radius: 1rem 0 0 1rem;"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('layout/footer'); %>
+
+</body>
+</html>
