@@ -4,7 +4,7 @@ const UserModel = require("../models/userModel");
 //Create
 exports.create = async (req, res) => {
     if (!req.body.title && !req.body.description) {
-        res.status(400).send({ message: "Entered data is empty!" });
+        res.status(400).send({ message: "Entered data is empty!!!" });
     }
 
     const movie = new MovieModel({
